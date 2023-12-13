@@ -1,6 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.matrix
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 version = "2023.11"
@@ -26,8 +27,7 @@ object BuildSecondary : BuildType({
     }
 
     triggers {
-        vcs {
-        }
+        vcs {  }
     }
 
     features {
