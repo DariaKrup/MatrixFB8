@@ -24,7 +24,16 @@ object BuildSecondary : BuildType({
             scriptContent = "ls"
         }
     }
+
+    triggers {
+        vcs {
+        }
+    }
+
     features {
+        perfmon { 
+        }
+
         matrix {
             param("matrix_OS", listOf(
                 value("OS_Linux"),
