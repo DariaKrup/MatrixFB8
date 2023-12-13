@@ -44,6 +44,6 @@ object BuildSecondary : BuildType({
 
 object customRepo : GitVcsRoot({
     name = "customRepo"
-    url = "https://github.com/DariaKrup/MatrixFB8"
+    url = "https://github.com/DariaKrup/java-maven-junit"
     branch = "refs/heads/main"
 })
