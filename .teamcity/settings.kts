@@ -31,8 +31,6 @@ object BuildSecondary : BuildType({
     }
 
     features {
-        perfmon { 
-        }
 
         matrix {
             param("matrix_OS", listOf(
