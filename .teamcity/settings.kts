@@ -1,67 +1,42 @@
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
-
-/*
-The settings script is an entry point for defining a TeamCity
-project hierarchy. The script should contain a single call to the
-project() function with a Project instance or an init function as
-an argument.
-
-VcsRoots, BuildTypes, Templates, and subprojects can be
-registered inside the project using the vcsRoot(), buildType(),
-template(), and subProject() methods respectively.
-
-To debug settings scripts in command-line, run the
-
-    mvnDebug org.jetbrains.teamcity:teamcity-configs-maven-plugin:generate
-
-command and attach your debugger to the port 8000.
-
-To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
--> Tool Windows -> Maven Projects), find the generate task node
-(Plugins -> teamcity-configs -> teamcity-configs:generate), the
-'Debug' option is available in the context menu for the task.
-*/
+import jetbrains.buildServer.configs.kotlin.matrix
+import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 version = "2023.11"
 
 project {
-
-    buildType(Build)
+vcsRoot(customRepo)
+    buildType(BuildSecondary)
 }
 
-object Build : BuildType({
-    name = "Build"
+object BuildSecondary : BuildType({
+    name = "build_secondary"
 
     vcs {
         root(DslContext.settingsRoot)
+        root(customRepo)
     }
 
     steps {
-        maven {
-            id = "Maven2"
-            enabled = false
-            goals = "clean test"
-            pomLocation = ".teamcity/pom.xml"
-            runnerArgs = "-Dmaven.test.failure.ignore=true"
-        }
         script {
-            name = "Echo parameters"
-            id = "Echo_parameters"
-            scriptContent = "echo %build.counter% %build.number%"
+            id = "simpleRunner"
+            scriptContent = "ls"
         }
     }
-
-    triggers {
-        vcs {
-        }
-    }
-
     features {
-        perfmon {
+        matrix {
+            param("matrix_OS", listOf(
+                value("OS_Linux"),
+                value("OS_Windows")
+            ))
         }
     }
+})
+
+
+object customRepo : GitVcsRoot({
+    name = "customRepo"
+    url = "https://github.com/DariaKrup/java-maven-junit"
+    branch = "refs/heads/main"
 })
