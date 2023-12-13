@@ -6,12 +6,12 @@ import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 version = "2023.11"
 
 project {
-vcsRoot(customRepo)
+    vcsRoot(customRepo)
     buildType(BuildSecondary)
 }
 
 object BuildSecondary : BuildType({
-    name = "build_secondary"
+    name = "build_new"
 
     vcs {
         root(DslContext.settingsRoot)
