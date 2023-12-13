@@ -3,7 +3,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.matrix
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
-version = "2023.05"
+version = "2023.11"
 
 project {
 vcsRoot(customRepo)
