@@ -30,10 +30,10 @@ version = "2023.11"
 
 project {
 
-    buildType(Build)
+    buildType(BuildSecondary)
 }
 
-object Build : BuildType({
+object BuildSecondary : BuildType({
     name = "build_new"
 
     vcs {
