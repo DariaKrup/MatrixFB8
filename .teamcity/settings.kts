@@ -15,14 +15,14 @@ object BuildSecondary : BuildType({
     name = "build_new"
 
     vcs {
-        root(DslContext.settingsRoot)
-        root(customRepo)
+        root(DslContext.settingsRoot, "+:. => subdir")
+        root(customRepo,"+:. => subdir")
     }
 
     steps {
         script {
             id = "simpleRunner"
-            scriptContent = "ls"
+            scriptContent = "ls %teamcity.build.checkoutDir%/subdir"
         }
     }
 
