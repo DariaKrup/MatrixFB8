@@ -76,13 +76,7 @@ object BuildSecondary : BuildType({
         }
         ideaInspections {
             id = "Inspection"
-            pathToProject = ""
-            jdk {
-                name = "17"
-                path = "%env.JDK_17_0%"
-                patterns("jre/lib/*.jar", "jre/lib/ext/jfxrt.jar")
-                extAnnotationPatterns("%teamcity.tool.idea%/lib/jdkAnnotations.jar")
-            }
+            pathToProject = ".teamcity/pom.xml"
             jvmArgs = "-Xmx1024m -XX:ReservedCodeCacheSize=512m"
             targetJdkHome = "%env.JDK_17_0%"
             ideaAppHome = "%teamcity.tool.intellij.DEFAULT%"
