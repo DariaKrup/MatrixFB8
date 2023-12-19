@@ -53,6 +53,7 @@ object BuildSecondary : BuildType({
     name = "build_new"
 
     params {
+        param("env.JDK_11", "/usr/lib/jvm/java-11-openjdk-amd64")
         param("env.JDK_17_0", "/usr/lib/jvm/java-17-openjdk-amd64")
     }
 
