@@ -52,6 +52,10 @@ project {
 object BuildSecondary : BuildType({
     name = "build_new"
 
+    params {
+        param("env.JDK_17_0", "/usr/lib/jvm/java-17-openjdk-amd64")
+    }
+
     vcs {
         root(DslContext.settingsRoot)
     }
