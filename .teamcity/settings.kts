@@ -52,7 +52,7 @@ object BuildSecondary : BuildType({
     name = "build_new"
 
     vcs {
-        root(DslContext.settingsRoot, "+:. => subdir")
+        root(DslContext.settingsRoot)
     }
 
     steps {
