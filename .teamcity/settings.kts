@@ -79,7 +79,7 @@ object BuildSecondary : BuildType({
                 extAnnotationPatterns("%teamcity.tool.idea%/lib/jdkAnnotations.jar")
             }
             jvmArgs = "-Xmx1024m -XX:ReservedCodeCacheSize=512m"
-            targetJdkHome = "%env.JDK_17%"
+            targetJdkHome = "%env.JDK_11%"
             ideaAppHome = "%teamcity.tool.intellij.DEFAULT%"
         }
     }
