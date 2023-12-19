@@ -3,6 +3,7 @@ import jetbrains.buildServer.configs.kotlin.amazonEC2CloudProfile
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.ideaInspections
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
@@ -67,6 +68,19 @@ object BuildSecondary : BuildType({
             name = "Echo parameters"
             id = "Echo_parameters"
             scriptContent = "echo %build.counter% %build.number%"
+        }
+        ideaInspections {
+            id = "Inspection"
+            pathToProject = ""
+            jdk {
+                name = "17"
+                path = "%env.JDK_17_0%"
+                patterns("jre/lib/*.jar", "jre/lib/ext/jfxrt.jar")
+                extAnnotationPatterns("%teamcity.tool.idea%/lib/jdkAnnotations.jar")
+            }
+            jvmArgs = "-Xmx1024m -XX:ReservedCodeCacheSize=512m"
+            targetJdkHome = "%env.JDK_17%"
+            ideaAppHome = "%teamcity.tool.intellij.DEFAULT%"
         }
     }
 
