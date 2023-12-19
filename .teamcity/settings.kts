@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.amazonEC2CloudProfile
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
@@ -31,6 +32,20 @@ version = "2023.11"
 project {
 
     buildType(BuildSecondary)
+
+    features {
+        amazonEC2CloudProfile {
+            id = "amazon-1"
+            name = "Cloud AWS Profile"
+            serverURL = "http://10.128.93.57:8154"
+            terminateIdleMinutes = 30
+            region = AmazonEC2CloudProfile.Regions.EU_WEST_DUBLIN
+            authType = accessKey {
+                keyId = "credentialsJSON:a1efd2f6-61a8-4744-bc00-c0549617099f"
+                secretKey = "credentialsJSON:49f6615f-a81a-4ab4-949d-bbd03b437fe1"
+            }
+        }
+    }
 }
 
 object BuildSecondary : BuildType({
