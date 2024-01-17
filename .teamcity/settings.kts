@@ -5,6 +5,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ideaInspections
 import jetbrains.buildServer.configs.kotlin.projectFeatures.awsConnection
+import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
@@ -46,6 +47,12 @@ project {
                 stsEndpoint = "https://sts.eu-west-1.amazonaws.com"
             }
             allowInBuilds = false
+        }
+        dockerRegistry {
+            id = "PROJECT_EXT_10"
+            name = "Docker Registry"
+            userName = "dariakrup"
+            password = "credentialsJSON:152d4ec0-eb8d-4fb2-8fa5-bd9d0b0546d2"
         }
         amazonEC2CloudProfile {
             id = "amazon-1"
