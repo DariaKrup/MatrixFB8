@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ideaInspections
+import jetbrains.buildServer.configs.kotlin.projectFeatures.awsConnection
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
@@ -35,6 +36,17 @@ project {
     buildType(BuildSecondary)
 
     features {
+        awsConnection {
+            id = "AmazonWebServicesAws"
+            name = "Amazon Web Services (AWS)"
+            regionName = "eu-west-1"
+            credentialsType = static {
+                accessKeyId = "AKIA5JH2VERVI62P5XDY"
+                secretAccessKey = "credentialsJSON:49f6615f-a81a-4ab4-949d-bbd03b437fe1"
+                stsEndpoint = "https://sts.eu-west-1.amazonaws.com"
+            }
+            allowInBuilds = false
+        }
         amazonEC2CloudProfile {
             id = "amazon-1"
             name = "Cloud AWS Profile"
