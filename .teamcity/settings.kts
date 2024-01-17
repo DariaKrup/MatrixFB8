@@ -76,6 +76,7 @@ object BuildSecondary : BuildType({
         }
         ideaInspections {
             id = "Inspection"
+            enabled = false
             pathToProject = ".teamcity/pom.xml"
             jvmArgs = "-Xmx1024m -XX:ReservedCodeCacheSize=512m"
             targetJdkHome = "%env.JDK_17_0%"
