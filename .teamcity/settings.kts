@@ -20,10 +20,7 @@ object BuildSecondary : BuildType({
     }
 
     steps {
-        script {
-            id = "simpleRunner"
-            scriptContent = "ls %teamcity.build.checkoutDir%/subdir"
-        }
+
     }
 
     triggers {
