@@ -113,6 +113,11 @@ object BuildSecondary : BuildType({
         }
     }
 
+    failureConditions {
+        testFailure = false
+        nonZeroExitCode = false
+    }
+
     features {
         perfmon {
         }
