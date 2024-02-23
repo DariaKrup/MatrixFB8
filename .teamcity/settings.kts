@@ -74,7 +74,7 @@ project {
 object BuildSecondary : BuildType({
     name = "build_new"
 
-    artifactRules = "**/* => target.zip"
+    artifactRules = "**/* => target-%teamcity.build.branch%.zip"
 
     params {
         param("env.JDK_11", "/usr/lib/jvm/java-11-openjdk-amd64")
