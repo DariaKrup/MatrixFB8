@@ -96,6 +96,7 @@ object BuildSecondary : BuildType({
         script {
             name = "Echo parameters"
             id = "Echo_parameters"
+            enabled = false
             scriptContent = "echo %build.counter% %build.number%"
         }
         ideaInspections {
